@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Flash Immobilier</title>
+<style>
+    *{margin:0;padding:0;box-sizing:border-box;font-family:Arial,sans-serif;}
+    body{background:#f4f4f9;color:#333;scroll-behavior:smooth;}
+    header{background:#ff4d4d;color:white;padding:20px;text-align:center;position:sticky;top:0;z-index:100;}
+    header h1{font-size:2.5em;transition:transform 0.3s;}
+    header:hover h1{transform:scale(1.05);}
+    nav{margin-top:10px;}
+    nav a{color:white;text-decoration:none;margin:0 15px;font-weight:bold;transition:color 0.3s;}
+    nav a:hover{color:#ffe600;}
+    .burger{display:none;cursor:pointer;font-size:1.5em;position:absolute;top:25px;right:20px;}
+    .hero{background:url('https://images.unsplash.com/photo-1570129477492-45c003edd2be') no-repeat center/cover;height:400px;display:flex;align-items:center;justify-content:center;color:white;font-size:2em;font-weight:bold;text-shadow:2px 2px 6px #000;animation:fadeIn 2s ease;}
+    @keyframes fadeIn{from{opacity:0;}to{opacity:1;}}
+    .container{padding:50px 20px;max-width:1200px;margin:0 auto;}
+    h2{text-align:center;margin-bottom:30px;color:#ff4d4d;position:relative;}
+    h2::after{content:"";width:60px;height:3px;background:#ff4d4d;display:block;margin:10px auto;border-radius:2px;}
+    .properties{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:20px;}
+    .property{background:white;padding:20px;border-radius:10px;box-shadow:0 4px 12px rgba(0,0,0,0.15);transition:transform 0.3s;}
+    .property:hover{transform:translateY(-5px);}
+    .property img{width:100%;border-radius:10px;transition:transform 0.3s;}
+    .property img:hover{transform:scale(1.05);}
+    .property h3{margin:15px 0 10px;color:#ff4d4d;}
+    .property p{color:#666;}
+    .btn{display:inline-block;padding:10px 20px;background:#ff4d4d;color:white;border:none;border-radius:5px;text-decoration:none;transition:background 0.3s, transform 0.3s;}
+    .btn:hover{background:#e60000;transform:scale(1.05);}
+    footer{background:#333;color:white;text-align:center;padding:20px;margin-top:50px;}
+    form input, form textarea{padding:10px;border-radius:5px;border:1px solid #ccc;width:100%;transition:border 0.3s;}
+    form input:focus, form textarea:focus{border:1px solid #ff4d4d;outline:none;}
+
+    /* Responsive */
+    @media(max-width:768px){
+        nav{display:none;flex-direction:column;background:#ff4d4d;position:absolute;top:70px;right:0;width:200px;border-radius:5px;}
+        nav a{margin:15px 0;text-align:center;}
+        nav.active{display:flex;}
+        .burger{display:block;}
+    }
+</style>
+</head>
+<body>
+
+<header>
+    <h1>Flash Immobilier</h1>
+    <div class="burger">&#9776;</div>
+    <nav>
+        <a href="#about">À propos</a>
+        <a href="#properties">Nos biens</a>
+        <a href="#contact">Contact</a>
+    </nav>
+</header>
+
+<section class="hero">
+    Trouvez la maison de vos rêves en un éclair !
+</section>
+
+<section id="about" class="container">
+    <h2>À propos de nous</h2>
+    <p style="text-align:center;max-width:800px;margin:0 auto;">Chez Flash Immobilier, nous facilitons l'achat et la vente de biens immobiliers rapidement et efficacement. Notre équipe d'experts est là pour vous guider à chaque étape.</p>
+</section>
+
+<section id="properties" class="container">
+    <h2>Nos biens</h2>
+    <div class="properties">
+        <div class="property">
+            <img src="https://images.unsplash.com/photo-1560185127-6f2e1b14c1a8" alt="Maison 1">
+            <h3>Maison moderne à Paris</h3>
+            <p>4 chambres, 2 salles de bain, jardin spacieux. Prix : 850 000€</p>
+            <a href="#contact" class="btn">Contactez-nous</a>
+        </div>
+        <div class="property">
+            <img src="https://images.unsplash.com/photo-1570129477492-45c003edd2be" alt="Maison 2">
+            <h3>Appartement cosy à Lyon</h3>
+            <p>2 chambres, proche du centre-ville, lumineux. Prix : 350 000€</p>
+            <a href="#contact" class="btn">Contactez-nous</a>
+        </div>
+        <div class="property">
+            <img src="https://images.unsplash.com/photo-1572120360610-d971b9b6394b" alt="Maison 3">
+            <h3>Villa luxueuse à Nice</h3>
+            <p>5 chambres, piscine privée, vue sur la mer. Prix : 1 500 000€</p>
+            <a href="#contact" class="btn">Contactez-nous</a>
+        </div>
+    </div>
+</section>
+
+<section id="contact" class="container">
+    <h2>Contactez-nous</h2>
+    <form style="max-width:600px;margin:0 auto;display:flex;flex-direction:column;gap:15px;">
+        <input type="text" placeholder="Votre nom" required>
+        <input type="email" placeholder="Votre email" required>
+        <textarea placeholder="Votre message" required></textarea>
+        <button type="submit" class="btn">Envoyer</button>
+    </form>
+</section>
+
+<footer>
+    &copy; 2025 Flash Immobilier. Tous droits réservés.
+</footer>
+
+<script>
+    const burger = document.querySelector('.burger');
+    const nav = document.querySelector('nav');
+    burger.addEventListener('click', () => {
+        nav.classList.toggle('active');
+    });
+    // Ferme le menu quand on clique sur un lien
+    document.querySelectorAll('nav a').forEach(link => {
+        link.addEventListener('click', () => {
+            nav.classList.remove('active');
+        });
+    });
+</script>
+
+</body>
+</html>
